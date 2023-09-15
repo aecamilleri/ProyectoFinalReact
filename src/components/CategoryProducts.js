@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropGreeting from './PropGreeting';
 import { useParams } from 'react-router-dom';
 import ItemCount from './ItemCount';
 import { useCart } from './CartContext';
@@ -61,7 +60,11 @@ function ProductItem({ product }) {
               {product.title}
             </h3>
           </Link>
-          <p>Precio: ${product.price}</p>
+          <div className="flex md:w-1/3 justify-start items-center">
+            <p className="text-white bg-black rounded text-lg p-4">
+              <span className="text-2xl">${product.price}</span>
+            </p>
+          </div>
         </div>
         <div className="w-3/12 text-left">
           {addToCartCount === 0 ? (
@@ -116,7 +119,6 @@ function CategoryProducts() {
   return (
     <div className="container m-auto max-w-screen-xl">
       <h2 className="p-8 text-5xl">Productos de la Categoría: {category}</h2>
-      <PropGreeting greeting={`¡Productos de la categoría ${category} disponibles!`} />
       <div className="grid grid-cols-1 gap-4 py-10">
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropGreeting from './PropGreeting';
 import { Link } from 'react-router-dom';
 import { db } from '../Firebase'; 
 import { collection, getDocs } from 'firebase/firestore';
@@ -37,15 +36,14 @@ function Categories() {
   return (
     <div className="container m-auto max-w-screen-xl">
       <h2 className='p-8 text-5xl'>Categorías de Productos</h2>
-      <PropGreeting greeting="¡Todas las categorías disponibles!" />
-      <div className="grid grid-cols-4 gap-4 py-10">
+      <div className="grid grid-cols-2 gap-4 py-10">
         {categoryList.map((category) => (
           <Link to={`/category/${category}`} key={category}>
             <div className='p-10 border rounded-sm w-full text-center'>
               <img
                 src={categoryImages[category]}
                 alt={category}
-                className="w-24 h-24 mx-auto mb-2"
+                className="w-48 h-48 mx-auto mb-2"
               />
               {category}
             </div>
